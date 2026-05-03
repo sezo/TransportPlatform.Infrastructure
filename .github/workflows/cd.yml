@@ -49,6 +49,6 @@ jobs:
           EOF
           dotnet nuget push ./nupkg/*.nupkg \
             --source http://host.docker.internal:5555/v3/index.json \
-            --api-key none \
+            --api-key your-secret-key \
             --skip-duplicate \
             --configfile /tmp/baget.config
