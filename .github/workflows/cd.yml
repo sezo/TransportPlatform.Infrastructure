@@ -16,10 +16,10 @@ jobs:
           dotnet-version: 9.0
 
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore src/TransportPlatform.Infrastructure.sln
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build src/TransportPlatform.Infrastructure.sln --no-restore --configuration Release
 
       # Pack both NuGet packages
       - name: Pack TransportPlatform.Contracts
