@@ -42,4 +42,5 @@ jobs:
           dotnet nuget push ./nupkg/*.nupkg \
             --source http://host.docker.internal:5555/v3/index.json \
             --api-key none \
-            --skip-duplicate
+            --skip-duplicate \
+            --allow-insecure-connections
