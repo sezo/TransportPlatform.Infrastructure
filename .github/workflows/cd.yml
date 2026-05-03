@@ -40,6 +40,6 @@ jobs:
       - name: Push to BaGet
         run: |
           dotnet nuget push ./nupkg/*.nupkg \
-            --source http://nuget.internal/v3/index.json \
+            --source http://host.docker.internal:5555/v3/index.json \
             --api-key none \
             --skip-duplicate
