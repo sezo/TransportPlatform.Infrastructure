@@ -83,7 +83,7 @@ public class UserContextMiddleware(
                 claims.Add(new Claim(ClaimTypes.Role, role.Trim()));
 
                 if (role.StartsWith("permission:"))
-                    claims.Add(new Claim("permission", role.Trim()));
+                    claims.Add(new Claim("permission", role["permission:".Length..].Trim()));
             }
 
             context.User = new ClaimsPrincipal(
