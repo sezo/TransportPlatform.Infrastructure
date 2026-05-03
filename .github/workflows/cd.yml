@@ -1,0 +1,45 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  publish-nuget:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+
+      # Pack both NuGet packages
+      - name: Pack TransportPlatform.Contracts
+        run: |
+          dotnet pack src/TransportPlatform.Contracts/TransportPlatform.Contracts.csproj \
+            --no-build \
+            --configuration Release \
+            --output ./nupkg
+
+      - name: Pack TransportPlatform.Infrastructure.Common
+        run: |
+          dotnet pack src/TransportPlatform.Infrastructure.Common/TransportPlatform.Infrastructure.Common.csproj \
+            --no-build \
+            --configuration Release \
+            --output ./nupkg
+
+      # Push to BaGet (on-premise NuGet server)
+      - name: Push to BaGet
+        run: |
+          dotnet nuget push ./nupkg/*.nupkg \
+            --source http://nuget.internal/v3/index.json \
+            --api-key none \
+            --skip-duplicate
