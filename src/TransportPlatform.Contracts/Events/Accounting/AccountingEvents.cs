@@ -51,3 +51,16 @@ public record CustomerRegistered(
     DateOnly DateOfBirth,
     string Email,
     DateTimeOffset OccurredAt);
+
+/// <summary>
+/// Published by: Accounting service (customer profile updated)
+/// Consumed by:  Reporting (update customer projection)
+/// </summary>
+public record CustomerUpdated(
+    Guid CustomerId,
+    Guid? IdentityId,
+    string FirstName,
+    string LastName,
+    DateOnly DateOfBirth,
+    string Email,
+    DateTimeOffset OccurredAt);

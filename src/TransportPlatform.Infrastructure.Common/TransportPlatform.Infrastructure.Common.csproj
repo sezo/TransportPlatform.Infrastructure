@@ -6,7 +6,7 @@
 
     <!-- NuGet package metadata -->
     <PackageId>TransportPlatform.Infrastructure.Common</PackageId>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>TransportPlatform Team</Authors>
     <Description>Shared infrastructure: auth middleware, messaging, observability, logging for TransportPlatform microservices.</Description>
     <PackageTags>transport;infrastructure;auth;messaging;observability</PackageTags>

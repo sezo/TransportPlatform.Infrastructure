@@ -28,7 +28,7 @@ public static class AuthExtensions
             .AddJwtBearer(options =>
             {
                 options.Authority = config["Keycloak:Authority"];
-                options.Audience = config["Keycloak:Audience"];
+                options.TokenValidationParameters.ValidateAudience = false;
                 options.RequireHttpsMetadata = false;
             });
 
