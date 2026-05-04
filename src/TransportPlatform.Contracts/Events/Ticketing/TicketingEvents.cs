@@ -20,6 +20,10 @@ public record TicketConfirmed(
     Guid TicketId,
     Guid UserId,
     Guid RouteId,
+    string RouteName,
+    string RouteOrigin,
+    string RouteDestination,
+    int SeatNumber,
     decimal Price,
     DateTimeOffset OccurredAt);
 

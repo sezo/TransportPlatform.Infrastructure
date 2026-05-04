@@ -38,3 +38,16 @@ public record PaymentRefunded(
     Guid InvoiceId,
     decimal Amount,
     DateTimeOffset OccurredAt);
+
+/// <summary>
+/// Published by: Accounting service (new customer registered — self-service or admin-created)
+/// Consumed by:  Reporting (build customer projection)
+/// </summary>
+public record CustomerRegistered(
+    Guid CustomerId,
+    Guid? IdentityId,
+    string FirstName,
+    string LastName,
+    DateOnly DateOfBirth,
+    string Email,
+    DateTimeOffset OccurredAt);
